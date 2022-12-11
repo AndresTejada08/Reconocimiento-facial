@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarUsuario">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarUsuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgregarUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codUsuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActualizarUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="criterio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarUsuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarTipoUsuario">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarTipoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarTipoUsuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarTipoUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tipoUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarTipoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgregarTipoUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarTipoUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codTipoUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarTipoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarTipoUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarTipoUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codTipoUsuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipoUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarTipoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActualizarTipoUsuarioResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarTipoUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="criterio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarTipoUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarTipoUsuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarPersona">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarPersonaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgregarPersonaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codPersona" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarPersonaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codPersona" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActualizarPersonaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="criterio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarPersonaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarAsistencia">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarAsistenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarAsistenciaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarAsistencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hora" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codPersona" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarAsistenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgregarAsistenciaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAsistencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarAsistenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarAsistenciaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarCoencidencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarCoencidenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarCoencidenciaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ListarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AgregarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="BuscarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarTipoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarTipoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ListarTipoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarTipoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarTipoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarTipoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AgregarTipoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarTipoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarTipoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarTipoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EliminarTipoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarTipoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarTipoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarTipoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarTipoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarTipoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarTipoUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarTipoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="BuscarTipoUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarTipoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarPersona" />
+  </wsdl:message>
+  <wsdl:message name="ListarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarPersona" />
+  </wsdl:message>
+  <wsdl:message name="AgregarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarPersona" />
+  </wsdl:message>
+  <wsdl:message name="EliminarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarPersona" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarPersona" />
+  </wsdl:message>
+  <wsdl:message name="BuscarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarAsistenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarAsistencia" />
+  </wsdl:message>
+  <wsdl:message name="ListarAsistenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarAsistenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarAsistenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarAsistencia" />
+  </wsdl:message>
+  <wsdl:message name="AgregarAsistenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarAsistenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAsistenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarAsistencia" />
+  </wsdl:message>
+  <wsdl:message name="BuscarAsistenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarAsistenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarCoencidenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarCoencidencia" />
+  </wsdl:message>
+  <wsdl:message name="BuscarCoencidenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarCoencidenciaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsColegioSoap">
+    <wsdl:operation name="Login">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Login de Usuario</wsdl:documentation>
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Muestra los datos de la tabla usuario</wsdl:documentation>
+      <wsdl:input message="tns:ListarUsuarioSoapIn" />
+      <wsdl:output message="tns:ListarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Agrega un nuevo usuario</wsdl:documentation>
+      <wsdl:input message="tns:AgregarUsuarioSoapIn" />
+      <wsdl:output message="tns:AgregarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Actualiza a un usuario</wsdl:documentation>
+      <wsdl:input message="tns:ActualizarUsuarioSoapIn" />
+      <wsdl:output message="tns:ActualizarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Eliminar a un usuario</wsdl:documentation>
+      <wsdl:input message="tns:EliminarUsuarioSoapIn" />
+      <wsdl:output message="tns:EliminarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca a un usuario</wsdl:documentation>
+      <wsdl:input message="tns:BuscarUsuarioSoapIn" />
+      <wsdl:output message="tns:BuscarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Muestra los datos de la tabla persona</wsdl:documentation>
+      <wsdl:input message="tns:ListarTipoUsuarioSoapIn" />
+      <wsdl:output message="tns:ListarTipoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTipoUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Agrega un nuevo tipo de usuario</wsdl:documentation>
+      <wsdl:input message="tns:AgregarTipoUsuarioSoapIn" />
+      <wsdl:output message="tns:AgregarTipoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipoUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina a un tipo de usuario</wsdl:documentation>
+      <wsdl:input message="tns:EliminarTipoUsuarioSoapIn" />
+      <wsdl:output message="tns:EliminarTipoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTipoUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Actualiza a un tipo de usuario</wsdl:documentation>
+      <wsdl:input message="tns:ActualizarTipoUsuarioSoapIn" />
+      <wsdl:output message="tns:ActualizarTipoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarTipoUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca un tipo de usuario</wsdl:documentation>
+      <wsdl:input message="tns:BuscarTipoUsuarioSoapIn" />
+      <wsdl:output message="tns:BuscarTipoUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPersona">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Muestra los datos de la tabla persona</wsdl:documentation>
+      <wsdl:input message="tns:ListarPersonaSoapIn" />
+      <wsdl:output message="tns:ListarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPersona">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Agrega una nueva persona</wsdl:documentation>
+      <wsdl:input message="tns:AgregarPersonaSoapIn" />
+      <wsdl:output message="tns:AgregarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPersona">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina a una persona</wsdl:documentation>
+      <wsdl:input message="tns:EliminarPersonaSoapIn" />
+      <wsdl:output message="tns:EliminarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPersona">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Actualiza a una persona</wsdl:documentation>
+      <wsdl:input message="tns:ActualizarPersonaSoapIn" />
+      <wsdl:output message="tns:ActualizarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPersona">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca a una persona</wsdl:documentation>
+      <wsdl:input message="tns:BuscarPersonaSoapIn" />
+      <wsdl:output message="tns:BuscarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsistencia">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Muestra los datos de la tabla asistencia</wsdl:documentation>
+      <wsdl:input message="tns:ListarAsistenciaSoapIn" />
+      <wsdl:output message="tns:ListarAsistenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarAsistencia">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Agrega una nueva asistencia</wsdl:documentation>
+      <wsdl:input message="tns:AgregarAsistenciaSoapIn" />
+      <wsdl:output message="tns:AgregarAsistenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAsistencia">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca una asistencia</wsdl:documentation>
+      <wsdl:input message="tns:BuscarAsistenciaSoapIn" />
+      <wsdl:output message="tns:BuscarAsistenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCoencidencia">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca si hay coencidencia entre la persona escanead y los registros de la base de datos</wsdl:documentation>
+      <wsdl:input message="tns:BuscarCoencidenciaSoapIn" />
+      <wsdl:output message="tns:BuscarCoencidenciaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsColegioSoap" type="tns:wsColegioSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ListarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarUsuario">
+      <soap:operation soapAction="http://tempuri.org/AgregarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ActualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap:operation soapAction="http://tempuri.org/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <soap:operation soapAction="http://tempuri.org/BuscarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoUsuario">
+      <soap:operation soapAction="http://tempuri.org/ListarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTipoUsuario">
+      <soap:operation soapAction="http://tempuri.org/AgregarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipoUsuario">
+      <soap:operation soapAction="http://tempuri.org/EliminarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTipoUsuario">
+      <soap:operation soapAction="http://tempuri.org/ActualizarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarTipoUsuario">
+      <soap:operation soapAction="http://tempuri.org/BuscarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPersona">
+      <soap:operation soapAction="http://tempuri.org/ListarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPersona">
+      <soap:operation soapAction="http://tempuri.org/AgregarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPersona">
+      <soap:operation soapAction="http://tempuri.org/EliminarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPersona">
+      <soap:operation soapAction="http://tempuri.org/ActualizarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPersona">
+      <soap:operation soapAction="http://tempuri.org/BuscarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsistencia">
+      <soap:operation soapAction="http://tempuri.org/ListarAsistencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarAsistencia">
+      <soap:operation soapAction="http://tempuri.org/AgregarAsistencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAsistencia">
+      <soap:operation soapAction="http://tempuri.org/BuscarAsistencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCoencidencia">
+      <soap:operation soapAction="http://tempuri.org/BuscarCoencidencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsColegioSoap12" type="tns:wsColegioSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ListarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/AgregarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/EliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/BuscarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ListarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTipoUsuario">
+      <soap12:operation soapAction="http://tempuri.org/AgregarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipoUsuario">
+      <soap12:operation soapAction="http://tempuri.org/EliminarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTipoUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarTipoUsuario">
+      <soap12:operation soapAction="http://tempuri.org/BuscarTipoUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPersona">
+      <soap12:operation soapAction="http://tempuri.org/ListarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPersona">
+      <soap12:operation soapAction="http://tempuri.org/AgregarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPersona">
+      <soap12:operation soapAction="http://tempuri.org/EliminarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPersona">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPersona">
+      <soap12:operation soapAction="http://tempuri.org/BuscarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsistencia">
+      <soap12:operation soapAction="http://tempuri.org/ListarAsistencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarAsistencia">
+      <soap12:operation soapAction="http://tempuri.org/AgregarAsistencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarAsistencia">
+      <soap12:operation soapAction="http://tempuri.org/BuscarAsistencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCoencidencia">
+      <soap12:operation soapAction="http://tempuri.org/BuscarCoencidencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsColegio">
+    <wsdl:port name="wsColegioSoap" binding="tns:wsColegioSoap">
+      <soap:address location="http://www.dais-w-04.somee.com/wsColegio.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsColegioSoap12" binding="tns:wsColegioSoap12">
+      <soap12:address location="http://www.dais-w-04.somee.com/wsColegio.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

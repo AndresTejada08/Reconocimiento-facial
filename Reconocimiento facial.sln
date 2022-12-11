@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reconocimiento facial", "Reconocimiento facial\Reconocimiento facial.csproj", "{46E40E95-EF31-4FB7-B899-7007629EC9A5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2} = {605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{DBEF46EF-6D75-4DDF-9A3D-1D4172B7F8C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{F16ADF8B-444B-47A0-9F9A-68222AE8C782}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{08686749-A198-4F8F-96DC-582E6C1D70C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaEntidades", "CapaEntidades\CapaEntidades.csproj", "{4C204442-4E08-4CA2-ADE7-C42127BD63AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocios", "CapaNegocios\CapaNegocios.csproj", "{222E6174-F9F5-457B-998E-5B0D18843DE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaServicios", "CapaServicios\CapaServicios.csproj", "{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46E40E95-EF31-4FB7-B899-7007629EC9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E40E95-EF31-4FB7-B899-7007629EC9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E40E95-EF31-4FB7-B899-7007629EC9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E40E95-EF31-4FB7-B899-7007629EC9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08686749-A198-4F8F-96DC-582E6C1D70C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08686749-A198-4F8F-96DC-582E6C1D70C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08686749-A198-4F8F-96DC-582E6C1D70C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08686749-A198-4F8F-96DC-582E6C1D70C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C204442-4E08-4CA2-ADE7-C42127BD63AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C204442-4E08-4CA2-ADE7-C42127BD63AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C204442-4E08-4CA2-ADE7-C42127BD63AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C204442-4E08-4CA2-ADE7-C42127BD63AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222E6174-F9F5-457B-998E-5B0D18843DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222E6174-F9F5-457B-998E-5B0D18843DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222E6174-F9F5-457B-998E-5B0D18843DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222E6174-F9F5-457B-998E-5B0D18843DE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46E40E95-EF31-4FB7-B899-7007629EC9A5} = {F16ADF8B-444B-47A0-9F9A-68222AE8C782}
+		{08686749-A198-4F8F-96DC-582E6C1D70C0} = {DBEF46EF-6D75-4DDF-9A3D-1D4172B7F8C4}
+		{4C204442-4E08-4CA2-ADE7-C42127BD63AC} = {DBEF46EF-6D75-4DDF-9A3D-1D4172B7F8C4}
+		{222E6174-F9F5-457B-998E-5B0D18843DE5} = {DBEF46EF-6D75-4DDF-9A3D-1D4172B7F8C4}
+		{605F1CA5-3DB1-4E96-86EC-06AAA8ACA3C2} = {DBEF46EF-6D75-4DDF-9A3D-1D4172B7F8C4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {830A2757-C717-4DB9-B232-7EC3203AC90D}
+	EndGlobalSection
+EndGlobal
